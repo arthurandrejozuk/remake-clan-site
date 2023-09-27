@@ -1,0 +1,31 @@
+{
+  "name": "remake-clan-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export":"next build && next export",
+    "start:static": "npx http-server ./out -c-1"
+  },
+  "keywords": [],
+  "author": "Arthur-Avila",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^18.2.21",
+    "@types/styled-components": "^5.1.27",
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "sharp": "^0.32.6",
+    "styled-components": "^6.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "20.6.2",
+    "typescript": "5.2.2"
+  }
+}
