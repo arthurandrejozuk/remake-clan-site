@@ -19,7 +19,7 @@ export async function getStaticProps(context){
         if(atual.id === id){
             return true
         }
-        return false
+        return 'false'
     })
     return{ 
         props: {

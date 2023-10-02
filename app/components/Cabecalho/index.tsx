@@ -127,6 +127,9 @@ export default function Cabecalho(){
                         </Link>
                         <Link href="/clan" className="icon__banner"><GiTatteredBanner/></Link>
                     </li>
+                  
+                        
+                   
                 </ul>
                 <div>
                     <span>

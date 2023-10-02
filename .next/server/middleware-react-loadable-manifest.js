@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}";
+self.__REACT_LOADABLE_MANIFEST="{\"..\\\\app\\\\components\\\\Main\\\\index.tsx -> ../Personagens\":{\"id\":\"..\\\\app\\\\components\\\\Main\\\\index.tsx -> ../Personagens\",\"files\":[\"static/chunks/app_components_Personagens_index_tsx.js\"]}}"
