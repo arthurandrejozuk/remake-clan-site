@@ -1,6 +1,9 @@
 import styled from 'styled-components';
-import Personagens from '../Personagens';
+// import Personagens from '../Personagens';
 import Cards from '../Cards';
+import dynamic from 'next/dynamic';
+
+const Personagens = dynamic(() => import('../Personagens'))
 
 const PrincipalDiv = styled.div`
     
