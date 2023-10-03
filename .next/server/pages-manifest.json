@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/modos/[id]": "pages/modos/[id].js",
+  "/": "pages/index.js",
   "/clan": "pages/clan.js",
-  "/": "pages/index.js"
+  "/modos/[id]": "pages/modos/[id].js"
 }
