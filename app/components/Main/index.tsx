@@ -69,7 +69,7 @@ const LoadingComponents = styled.div`
         border-radius: 50%;
         width: 40px;
         height: 40px;
-        animation: spin 2s linear infinite;
+        animation: spin 0.7s linear infinite;
 }
 
     @keyframes spin {
@@ -84,7 +84,11 @@ export default function Principal() {
     const [isClient, setIsClient] = useState(false)
  
     useEffect(() => {
-        setIsClient(true)
+        setTimeout(() => {
+
+            setIsClient(true)
+        }, 1000);
+
     }, [])
  
 
