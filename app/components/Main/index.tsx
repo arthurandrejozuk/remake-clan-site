@@ -2,6 +2,7 @@ import styled from 'styled-components';
 // import Personagens from '../Personagens';
 import Cards from '../Cards';
 import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
 
 const Personagens = dynamic(() => import('../Personagens'))
 
@@ -23,6 +24,7 @@ const PrincipalDiv = styled.div`
     h3{
         margin-bottom: 8px;
     }
+    
     .volta{
       
     }
@@ -54,13 +56,50 @@ const Div = styled.div`
     display: flex;
     justify-content: center;
 `
+
+const LoadingComponents = styled.div`
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    .loading-spinner {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #e7380c;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 2s linear infinite;
+}
+
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+
+`
 export default function Principal() {
+
+
+    const [isClient, setIsClient] = useState(false)
+ 
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
+ 
+
     return(
-        <PrincipalDiv>
-            <Personagens/>
-            <Div>
-                <Cards/>
-            </Div>
-        </PrincipalDiv>
+        <>
+        {isClient ?   
+            <PrincipalDiv>
+                <Personagens/>
+                <Div>
+                    <Cards/>
+                </Div>
+            </PrincipalDiv> 
+        : <LoadingComponents>
+            <div className='loading-spinner'></div>
+          </LoadingComponents>}
+        </>
     )
 }

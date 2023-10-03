@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import personagens from "../../../public/json/personagens.json";
-import Image from "next/image";
 import { AiOutlinePlus } from 'react-icons/ai';
 import {RiDeleteBack2Line} from 'react-icons/ri';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "../Modal";
 import { themes } from "../../../theme/theme";
-
 
 
 
@@ -87,11 +85,10 @@ export default function Personagens() {
                 return (
                     <PersonagemDiv key={personagem.key} style={{ backgroundColor: `rgba(${corFundo}, 0.5)` }}>
     
-                        <Image className='imagem' width={300} height={500} src={personagem.imagem} alt="Caçador do Fonix" />
+                        <img className='imagem' width={300} height={500} src={personagem.imagem} alt="Caçador do Fonix" />
 
                         <h2 >{personagem.nome}</h2>
                         <h3>{personagem.classe_principal}</h3>
-                        {}
                         <h3>Subclasse favorita: <h3 id="sub" style={{color: themes.find(theme => personagem.subclasse_favorita === theme.identificado)?.fontColor || '#1b0229'}}>{personagem.subclasse_favorita}</h3></h3>
                         <p>
                             {personagem.descricao}
