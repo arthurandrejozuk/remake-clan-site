@@ -68,6 +68,7 @@ function mostraPersonagens(quantidade, setQuantidade, setBotao) {
     }
 }
 
+
 export default function Personagens() {
     
     const [ativado, setAtivado] = useState(false)

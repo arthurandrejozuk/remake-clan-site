@@ -21,23 +21,63 @@ const ModalDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  .botao_form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    padding: 4px;
+    color: #350701;
+    border-radius: 4px;
+    background-color: antiquewhite;
+  }
+  .botao_form:hover {
+    background-color: #dac2a4;
+    cursor: pointer;
+  }
+  input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    padding: 4px;
+    border-radius: 4px;
+    color: #350701;
+    background-color: antiquewhite;
+  }
+  input::placeholder{
+    color: #350701;
+  }
   button{
     display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    border-right: none;
+    padding: 4px;
+    color: #350701;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius:4px;
+    background-color: antiquewhite;
+  }
+  button:hover{
+    background-color: #dac2a4;
+    cursor: pointer;
   }
   section{
-    padding: 20px;
-    background-color: antiquewhite;
+    padding: 32px;
+    background-color: #e9d6bf;
     display: flex;
-    width: 450px;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
+    border-radius: 8px;
+    border: 2px solid #350701;
   }
   form{
+    flex-direction: column;
     display: flex;
     gap: 12px;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap ;
     gap: 12px;
   }
@@ -50,6 +90,14 @@ const ModalDiv = styled.div`
   }
 `
 
+const StyledLabels = styled.div`
+  
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 8px;
+
+`
 
 interface PersonagensProps {
      
@@ -59,62 +107,142 @@ interface PersonagensProps {
     }
 
 
-let arrPerso = [{}]
+
+    function useForm (initialValues) {
+      const [values, setValues] = useState(initialValues)
+      
+      return {
+          values, 
+          handleChange(evento) {
+              const {name, value} = evento.target
+              setValues({
+                  ...values,
+                  [name]:value
+              })
+        
+          },
+          clearForm() {
+            setValues({
+              nome: "",
+              classe: "",
+              subclasse: ""
+            })
+          }
+      }
+  }
 
 export default function Modal({ativa, children}: ModalProps){
 
-    const [nome, setNome] = useState('');
-    const [classe, setClasse] = useState('')
-    
-    function criaPersonagem({nome, classe}:PersonagensProps) {
-        const objPersonagens = {nome:nome, classe: classe} 
-        const novoPersonagem = arrPerso.push(objPersonagens);
-        console.log(arrPerso);
-        return novoPersonagem;
-    }
-
+    const form = useForm({
+      initialValue: {
+        nome: "",
+        classe: "",
+        subclasse: ""
+      }
+    })
+   
+ 
     if(ativa){
         return(
             <ModalDiv>
+              <StyledLabels>
                 {children}
+              </StyledLabels>
+                
+              
                 <section>
                         <form onSubmit={(evento => {
                             evento.preventDefault();
-
-                            criaPersonagem({nome, classe});
-                            
+                            console.log(form);
+                            form.clearForm();
                         })}>
-                                <input 
-                                    type="text"
-                                    value={nome}
-                                    required
-                                    placeholder='Nome'
-                                    onChange={(event) => {setNome(event.target.value)}}
-                                  />   
-                                  <>
+                            <StyledLabels>
+                              <input 
+                                  type="text"
+                                  value={form.values.nome}
+                                  name='nome'
+                                  required
+                                  placeholder='Nome'
+                                  onChange={form.handleChange}
+                                />   
+                            </StyledLabels>
+                                  <StyledLabels>
                                     <label> 
                                         <input 
                                         type="radio" 
                                         value='Caçador'
-                                        checked={classe === 'Caçador'}
-                                        onChange={(e) => {setClasse(e.target.value)}}
+                                        name='classe'
+                                        checked={form.values.classe === 'Caçador'}
+                                        onChange={form.handleChange}
                                     /> Caçador</label>
                                     <label>
                                     <input 
                                         type="radio" 
-                                        value='Titan'
-                                        checked={classe === 'Titan'}
-                                        onChange={(e) => {setClasse(e.target.value)}}
+                                        value="Titan"
+                                        name='classe'
+                                        checked={form.values.classe  === 'Titan'}
+                                        onChange={form.handleChange}
                                     />Titan</label>
                                     <label>
                                         <input 
                                             type="radio" 
-                                            value='Arcano'
-                                            checked={classe === 'Arcano'}
-                                            onChange={(e) => {setClasse(e.target.value)}}
-                                        />Arcano</label>
-                                  </>
-                            <button>Adicionar</button>
+                                            value="Arcano"
+                                            name='classe'
+                                            checked={form.values.classe  === 'Arcano'}
+                                            onChange={form.handleChange}
+                                        />
+                                        Arcano
+                                      </label>
+                                  </StyledLabels>
+                                  <StyledLabels>
+                                    <label> 
+                                        <input 
+                                        type="radio" 
+                                        value='Solar'
+                                        name='subclasse'
+                                        checked={form.values.subclasse === 'Solar'}
+                                        onChange={form.handleChange}
+                                    /> Solar</label>
+                                    <label>
+                                    <input 
+                                        type="radio" 
+                                        value="Vacuo"
+                                        name='subclasse'
+                                        checked={form.values.subclasse  === 'Vacuo'}
+                                        onChange={form.handleChange}
+                                    />Vácuo</label>
+                                    <label>
+                                        <input 
+                                            type="radio" 
+                                            value="Arco"
+                                            name='subclasse'
+                                            checked={form.values.subclasse  === 'Arco'}
+                                            onChange={form.handleChange}
+                                        />
+                                        Arco
+                                      </label>
+                                      <label>
+                                        <input 
+                                            type="radio" 
+                                            value="Strand"
+                                            name='subclasse'
+                                            checked={form.values.subclasse  === 'Strand'}
+                                            onChange={form.handleChange}
+                                        />
+                                        Strand
+                                      </label>
+                                      <label>
+                                        <input 
+                                            type="radio" 
+                                            value="Stasis"
+                                            name='subclasse'
+                                            checked={form.values.subclasse  === 'Stasis'}
+                                            onChange={form.handleChange}
+                                        />
+                                        Stasis
+                                      </label>
+                                  </StyledLabels>
+                            <button className='botao_form'>Adicionar</button>
                         </form> 
                 </section>
             </ModalDiv>
