@@ -87,7 +87,7 @@ export default function Principal() {
         setTimeout(() => {
 
             setIsClient(true)
-        }, 2500);
+        }, 1000);
 
     }, [])
  
