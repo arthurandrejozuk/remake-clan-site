@@ -1,0 +1,48 @@
+
+import { createClient } from "@supabase/supabase-js";
+import { NextApiRequest, NextApiResponse } from "next";
+//chaves que estarão no .env
+// const SUPABASE_URL = process.env.SUPABASE_URL;
+// const SUPABASE_KEY = process.env.SUPABASE_KEY; 
+const dbClient = createClient("https://joxjgdureqxzledklsuv.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpveGpnZHVyZXF4emxlZGtsc3V2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NjUxMDAzMCwiZXhwIjoyMDEyMDg2MDMwfQ.Tm2CJXcc8pes8Jtvb9gPAOIGASHUsj7A7Yn9_KHT3HM")
+
+//configurando os status padrões
+const httpStatus = {
+    Success: 200,
+    BadRequest: 400,
+    Failure: 500
+}
+//aqui você colocara os metodos CRUD 
+const controllerByMethods = {
+
+    async POST(req:NextApiRequest, res:NextApiResponse){
+    // veremos mais como utilizar esse metodo para cadastrar no banco de dados
+        console.log(req.body)
+        res
+            .status(httpStatus.Success)
+            .json({message: "Post request!"});
+    },
+    async GET(req:NextApiRequest, res:NextApiResponse){
+        // pegando os dados do dbClient no caso data = dados error = caso não seja possivel conectar devido a algum erro
+        const {data, error} = await dbClient.from('guardian').select("*")
+        if(data){
+            res
+                .status(httpStatus.Success)
+                .json({message: "Get request!", data});
+        }
+        res.status(httpStatus.BadRequest)
+            .json({message: "Não foi possivel usar o methodo", error})
+    }
+}
+
+
+
+export default async function handler (req:NextApiRequest, res:NextApiResponse) {
+    //handler será que metodo foi requisitado, caso o tal metodo não exista então um erro ocorrerá
+    const controller = controllerByMethods[req.method as string];
+    if(!controller){
+        res.status(httpStatus.Failure).json({ error: "Method not allowed" });;
+        return;
+    }
+    await controller(req, res);
+}

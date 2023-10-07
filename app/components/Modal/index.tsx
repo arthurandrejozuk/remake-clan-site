@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import personagens from '../../../public/json/personagens.json';
 import { useState } from 'react';
 
 interface ModalProps {
@@ -98,30 +97,31 @@ const StyledLabels = styled.div`
   gap: 8px;
 
 `
-
-interface PersonagensProps {
-     
-        nome: string;
-        classe: string;
-  
-    }
-
-
-
+// useForm é uma função onde guardaremos os valores 
+//e onde criaremos funções com handleChange : 
+// que 
+// clearForm
+// ele se torna um meio termo para criação de novos objetos sem que precisemos colocar um por um dos obj e classifica-los
     function useForm (initialValues) {
       const [values, setValues] = useState(initialValues)
       
       return {
           values, 
+          //escutará a o evento de mudança no target e entao fará as mudanças com setValues, que recebe um obj
           handleChange(evento) {
+              // separa o name que classifica em um input o que esta sendo o target 
+              // e o value é o valor do name 
               const {name, value} = evento.target
               setValues({
+                // pega os valores anteriores
                   ...values,
+                  //são valores e nomes genericos para representar os do obj concreto
                   [name]:value
               })
         
           },
           clearForm() {
+            //esse codigo pode mudar, pois no caso de novos valores para preencher eu terei de coloca-los aqui tbm
             setValues({
               nome: "",
               classe: "",
@@ -134,6 +134,7 @@ interface PersonagensProps {
 export default function Modal({ativa, children}: ModalProps){
 
     const form = useForm({
+      // criando um form com as configs do form que será usado
       initialValue: {
         nome: "",
         classe: "",
@@ -141,7 +142,10 @@ export default function Modal({ativa, children}: ModalProps){
       }
     })
    
- 
+    // ativa é uma props que tem valor booleano, pois um modal não deve aparecer caso 
+    // ativa = false;
+    // permitindo que essa mudança ocorra por outro componente
+
     if(ativa){
         return(
             <ModalDiv>
@@ -154,6 +158,17 @@ export default function Modal({ativa, children}: ModalProps){
                         <form onSubmit={(evento => {
                             evento.preventDefault();
                             console.log(form);
+                            //utilizamos nossa api, no caso aqui seria o metodo post
+                            // que recebe um body 
+                            fetch("/api/guardioes/optin", {
+                              method:"POST",
+                              body: JSON.stringify(form.values),
+                              headers: {
+                                "Content-Type":"application/json"
+                              },
+                            }).then(async(resposta) => {
+                              console.log(resposta.json())
+                            })
                             form.clearForm();
                         })}>
                             <StyledLabels>

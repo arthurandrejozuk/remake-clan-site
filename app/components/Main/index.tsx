@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import Cards from '../Cards';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
+;
 
-const Personagens = dynamic(() => import('../Personagens'))
+const PersonagensBanco = dynamic(() => import('../PersonagensBanco'))
 
 const PrincipalDiv = styled.div`
     
@@ -87,7 +88,7 @@ export default function Principal() {
         setTimeout(() => {
 
             setIsClient(true)
-        }, 1000);
+        }, 500);
 
     }, [])
  
@@ -96,14 +97,15 @@ export default function Principal() {
         <>
         {isClient ?   
             <PrincipalDiv>
-                <Personagens/>
+                <PersonagensBanco />
                 <Div>
                     <Cards/>
                 </Div>
             </PrincipalDiv> 
         : <LoadingComponents>
             <div className='loading-spinner'></div>
-          </LoadingComponents>}
+          </LoadingComponents>
+          }
         </>
     )
 }

@@ -1,27 +1,37 @@
 import Link from "next/link";
+//modos é um arquivo json que tem configurações para criação de mais de uma pagina,
+// nesse caso fizemos uma pagina para cada modo
 import modos from '../../public/json/modos.json';
 import PaginaDefault from "../../app/components/PaginaDefault";
 import styled from 'styled-components';
 
+// getStaticProps permite a criação de páginas estaticas 
+//e também usar arquivos com json para mapear-lo 
+//e criar uma pagina estatica para cada objeto nesse caso.
 export const getStaticPaths = (async () => {
     const paths = modos.map((modo) => {
         return {params: {id: `${modo.id}`}}
     })
+    //configurações padroes
     return {
         paths: paths,
         fallback: false,
     }
 })
-
+// como foi feito em cima, o parametro id é nosso id do modo tbm, porém poderia ser outro
 export async function getStaticProps(context){
+    //verifica se o id passado e undefined caso, não, retorna o parametro normal 
     const id = context.params.id !== undefined ? context.params.id : null;
     const modo = modos.find((atual) => {
+        //compara o id do params com id do modo atual com o find 
         if(atual.id === id){
             return true
         }
         return false
     })
     return{ 
+        //caso seja true retornara essas props para serem usadas no caso do modo espeficico
+        //essas interrogações permitem que um modo não tenha determinado dado
         props: {
             id: modo?.id,
             title: modo?.modo,
@@ -76,7 +86,7 @@ const ModosContainer = styled.div`
     }
     
 `
-
+// recebe props do getStaticProps
 export default function Post(props){
 	
 	return(

@@ -8,13 +8,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export":"next build && next export",
+    "export": "next build && next export",
     "start:static": "npx http-server ./out -c-1"
   },
   "keywords": [],
   "author": "Arthur-Avila",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
     "@types/react": "^18.2.21",
     "@types/styled-components": "^5.1.27",
     "next": "^13.4.19",
