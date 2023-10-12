@@ -11,9 +11,10 @@ const PrincipalDiv = styled.div`
     
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-right:12px;
+    margin-left:12px;
     margin-top: 24px;
-    margin-right: 100px;
-    margin-left: 100px;
     margin-bottom: 24px;
     flex-direction: column;
     div{
@@ -47,9 +48,8 @@ const PrincipalDiv = styled.div`
     }
 
     @media(min-width: 1000px){
-        margin-right: 300px;
-        margin-left: 300px;
-        
+        margin-right: 200px;
+        margin-left: 200px
     }
 `
 

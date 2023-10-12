@@ -25,12 +25,13 @@ const StyledMenuHam = styled.div`
     div{
         display: flex;
         align-items: center;
-        margin-right:24px ;
+        margin-right:32px ;
+       
     }
 
 
     @media (max-width: 500px) {
-        width: 50%
+        width: 70%
     }
 `
 

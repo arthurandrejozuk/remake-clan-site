@@ -95,10 +95,11 @@ const Header = styled.div`
         .icon__home, .icon__banner{
             display:  block;
             color: #350701;
-            font-size: 40px;
+            font-size: 36px;
         }
         ul{
-            gap: 60px;
+            gap: 20px;
+            margin-right:12px;
         }
     }
 

@@ -5,10 +5,12 @@ const Info = styled.ul`
     
     display: flex;
     flex-direction: column;
+;
     a{
         text-decoration: none;
         color: antiquewhite;
         border: 4px solid #77625e;
+        margin-bottom:40px;
     }
     a:hover{
         border-bottom: 4px solid #410c03;
