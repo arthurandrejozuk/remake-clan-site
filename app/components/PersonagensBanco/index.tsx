@@ -112,9 +112,9 @@ export default function PersonagensBanco() {
         <>                                 
             {doisPersonagens.map((personagem: CaractersProps) => {
                 return (
-                        <PersonagemDiv key={personagem.key} style={{ backgroundColor: `rgba(${personagem.corFundo || 'blue'}, 0.5)` }}>
+                        <PersonagemDiv key={personagem.key} style={{ backgroundColor: `rgba(${personagem.classe === "Caçador" ? "08,83,95, 0.8" : personagem.classe === "Titan" ? "183,58,79, 0.8" : personagem.classe === "Arcano"? "203,160,68,0.8" : null})` }}>
 
-                            <img className='imagem' width={300} height={500} src={personagem.imagem} alt="Caçador do Fonix" />
+                            <img className='imagem' width={300} height={500} src={personagem.imagem === null ? "https://images.unsplash.com/photo-1599508704512-2f19efd1e35f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80" : personagem.imagem } alt="Caçador do Fonix" />
 
                             <h2 >{personagem.nome}</h2>
                             <h3>{personagem.classe}</h3>

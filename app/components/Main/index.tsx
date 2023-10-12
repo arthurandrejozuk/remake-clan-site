@@ -2,9 +2,9 @@ import styled from 'styled-components';
 // import Personagens from '../Personagens';
 import Cards from '../Cards';
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from 'react';
-;
+import { useEffect, useState } from 'react';;
 
+// serve para fazer um foco e importar primeiro o PersonagensBanco
 const PersonagensBanco = dynamic(() => import('../PersonagensBanco'))
 
 const PrincipalDiv = styled.div`
@@ -64,6 +64,7 @@ const LoadingComponents = styled.div`
     justify-content: center;
     align-items: center;
     height: 40vh;
+    
     .loading-spinner {
         border: 6px solid #f3f3f3;
         border-top: 6px solid #e7380c;
@@ -83,7 +84,7 @@ export default function Principal() {
 
 
     const [isClient, setIsClient] = useState(false)
- 
+    // useEffect serve para tirar o erro de hydration do componente 
     useEffect(() => {
         setTimeout(() => {
 
@@ -91,7 +92,9 @@ export default function Principal() {
         }, 500);
 
     }, [])
- 
+    // se isClient é verdadeiro, ele vai retornar o componente, caso não 
+    // o loading , nesse caso ele começa como falso e dps true 
+    // então é false == loading por 0.5s, true == componente Principal
 
     return(
         <>

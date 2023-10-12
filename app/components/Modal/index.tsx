@@ -125,7 +125,9 @@ const StyledLabels = styled.div`
             setValues({
               nome: "",
               classe: "",
-              subclasse: ""
+              subclasse: "",
+              descricao:"",
+              imagem:""
             })
           }
       }
@@ -138,7 +140,9 @@ export default function Modal({ativa, children}: ModalProps){
       initialValue: {
         nome: "",
         classe: "",
-        subclasse: ""
+        subclasse: "",
+        descricao: "",
+        imagem: ""
       }
     })
    
@@ -167,9 +171,10 @@ export default function Modal({ativa, children}: ModalProps){
                                 "Content-Type":"application/json"
                               },
                             }).then(async(resposta) => {
-                              console.log(resposta.json())
+                              console.log(await resposta.json())
                             })
                             form.clearForm();
+                            window.location.reload();
                         })}>
                             <StyledLabels>
                               <input 
@@ -256,6 +261,12 @@ export default function Modal({ativa, children}: ModalProps){
                                         />
                                         Stasis
                                       </label>
+                                  </StyledLabels>
+                                  <StyledLabels>
+                                    <input type="text" value={form.values.descricao} required name="descricao" placeholder='Descrição' onChange={form.handleChange} />
+                                  </StyledLabels>
+                                  <StyledLabels>
+                                    <input style={{width: "300px"}} type="text" value={form.values.imagem} required name="imagem" placeholder='Coloque um endereço de imagem' onChange={form.handleChange} />
                                   </StyledLabels>
                             <button className='botao_form'>Adicionar</button>
                         </form> 

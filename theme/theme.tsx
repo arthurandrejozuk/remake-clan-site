@@ -15,13 +15,14 @@ const arcoTheme = {
 
 const strandTheme = {
     identificado: 'Strand',
-    fontColor: '#96C291'
+    fontColor: '#96c291'
 }
 
 const stasisTheme = {
     identificado: 'Stasis',
     fontColor: '#96B6C5'
 }
+
 
 export const themes = [
     solarTheme,
@@ -31,11 +32,3 @@ export const themes = [
     stasisTheme
 ]
    
-
-// export {
-//     solarTheme,
-//     vacuoTheme,
-//     arcoTheme,
-//     strandTheme,
-//     stasisTheme
-// }

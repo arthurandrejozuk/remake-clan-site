@@ -17,10 +17,15 @@ const controllerByMethods = {
 
     async POST(req:NextApiRequest, res:NextApiResponse){
     // veremos mais como utilizar esse metodo para cadastrar no banco de dados
-        console.log(req.body)
+        const {nome, classe, subclasse, descricao, imagem} = req.body
+   
+    //Aqui colocaremos os valores pegos lá no modal no banco de dados
+        await dbClient.from("guardian").insert({nome:nome, classe:classe, subclasse:subclasse, descricao: descricao, imagem:imagem})
+        await dbClient.auth.admin.createUser({})
         res
-            .status(httpStatus.Success)
-            .json({message: "Post request!"});
+        .status(httpStatus.Success)
+        .json({ messsage:"Cadastrado", nome });
+
     },
     async GET(req:NextApiRequest, res:NextApiResponse){
         // pegando os dados do dbClient no caso data = dados error = caso não seja possivel conectar devido a algum erro

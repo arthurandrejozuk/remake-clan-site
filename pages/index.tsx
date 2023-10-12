@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Principal from "../app/components/Main";
 import PaginaDefault from "../app/components/PaginaDefault";
 
