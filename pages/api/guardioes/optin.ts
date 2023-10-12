@@ -25,7 +25,7 @@ const controllerByMethods = {
         res
         .status(httpStatus.Success)
         .json({ messsage:"Cadastrado", nome });
-
+        return
     },
     async GET(req:NextApiRequest, res:NextApiResponse){
         // pegando os dados do dbClient no caso data = dados error = caso não seja possivel conectar devido a algum erro
@@ -34,9 +34,11 @@ const controllerByMethods = {
             res
                 .status(httpStatus.Success)
                 .json({message: "Get request!", data});
-        }
+                return
+        } 
         res.status(httpStatus.BadRequest)
             .json({message: "Não foi possivel usar o methodo", error})
+            return
     }
 }
 
