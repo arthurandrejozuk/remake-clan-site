@@ -14,6 +14,7 @@ const Header = styled.div`
     text-align: center;
     background-color: #ad9c99;
     border-bottom: 1px solid #350701;
+    
 
     h1{
         color: #350701;
@@ -85,7 +86,7 @@ const Header = styled.div`
        
     }
 
-    @media(max-width: 1000px){
+    @media(max-width: 800px){
         h1{
             display: none;
         }
