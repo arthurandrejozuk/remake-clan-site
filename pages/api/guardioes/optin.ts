@@ -47,9 +47,9 @@ const controllerByMethods = {
 export default async function handler (req:NextApiRequest, res:NextApiResponse) {
     //handler será que metodo foi requisitado, caso o tal metodo não exista então um erro ocorrerá
     const controller = controllerByMethods[req.method as string];
-    if(!controller){
-        res.status(httpStatus.Failure).json({ error: "Method not allowed" });;
-        return;
-    }
+    // if(!controller){
+    //     res.status(httpStatus.Failure).json({ error: "Method not allowed" });;
+    //     return;
+    // }
     await controller(req, res);
 }
