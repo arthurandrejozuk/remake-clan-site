@@ -26,10 +26,7 @@ const PrincipalDiv = styled.div`
     h3{
         margin-bottom: 8px;
     }
-    
-    .volta{
-      
-    }
+
     .imagem{
         float: left;
         border-radius: 12px;

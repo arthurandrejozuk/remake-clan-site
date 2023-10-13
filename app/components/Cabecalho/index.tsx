@@ -46,7 +46,7 @@ const Header = styled.div`
         
     }
     .home:hover, .clan:hover{
-        border-bottom: 2px solid antiquewhite;
+        border-bottom: 2px solid #410c03;
         border-radius: 4px
         
     }
