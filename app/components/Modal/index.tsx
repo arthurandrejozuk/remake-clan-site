@@ -20,50 +20,62 @@ const ModalDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  .botao_form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid;
-    padding: 4px;
-    color: #350701;
-    border-radius: 4px;
-    background-color: antiquewhite;
-  }
-  .botao_form:hover {
-    background-color: #dac2a4;
-    cursor: pointer;
-  }
+  
   input{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid;
-    padding: 4px;
+    border: none;
+    border-bottom: 1px solid;
+    padding: 8px;
     border-radius: 4px;
     color: #350701;
     background-color: antiquewhite;
   }
+
+  .radio{
+    background-image: -webkit-linear-gradient(0deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%),
+                      -webkit-linear-gradient(90deg, transparent 20%, hsla(0,0%,100%,.7), transparent 80%);
+    border-radius: 10px;          
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+    -webkit-appearance: none;
+  }
+  .radio::after{
+    border-radius: 25px;
+    content: '';
+    display: block;
+    height: 7px;
+    width: 7px;
+  }
+  .radio:checked::after{
+    background-color: #350701;        
+  }
+
   input::placeholder{
     color: #350701;
   }
+
   button{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid;
-    border-right: none;
+    border: none;
+    border-bottom: 1px solid;
     padding: 4px;
     color: #350701;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius:4px;
-    background-color: antiquewhite;
+    background-color: #d4bda2;
   }
+
   button:hover{
     background-color: #dac2a4;
     cursor: pointer;
   }
+  
   section{
+    text-align: center;
     padding: 32px;
     background-color: #e9d6bf;
     display: flex;
@@ -87,6 +99,27 @@ const ModalDiv = styled.div`
     display: flex;
     align-items: center;
   }
+  span{
+        position: relative;
+        left: 450px;
+        bottom: 180px;
+        button{
+          border-bottom: none;
+          background-color:#e9d6bf;
+          font-size: 32px;
+        }
+      }
+  @media(max-width: 500px){
+   
+      span{
+        left: 400px;
+        bottom: 180px;
+      }
+      .radio{
+        margin-right: 2px;
+      }
+  }
+
 `
 
 const StyledLabels = styled.div`
@@ -152,13 +185,12 @@ export default function Modal({ativa, children}: ModalProps){
 
     if(ativa){
         return(
+          <>
+          
             <ModalDiv>
-              <StyledLabels>
-                {children}
-              </StyledLabels>
-                
-              
+            {children}
                 <section>
+                  
                         <form onSubmit={(evento => {
                             evento.preventDefault();
                             console.log(form);
@@ -189,6 +221,7 @@ export default function Modal({ativa, children}: ModalProps){
                                   <StyledLabels>
                                     <label> 
                                         <input 
+                                        className='radio'
                                         type="radio" 
                                         value='Caçador'
                                         name='classe'
@@ -197,6 +230,7 @@ export default function Modal({ativa, children}: ModalProps){
                                     /> Caçador</label>
                                     <label>
                                     <input 
+                                        className='radio'
                                         type="radio" 
                                         value="Titan"
                                         name='classe'
@@ -205,6 +239,7 @@ export default function Modal({ativa, children}: ModalProps){
                                     />Titan</label>
                                     <label>
                                         <input 
+                                            className='radio'
                                             type="radio" 
                                             value="Arcano"
                                             name='classe'
@@ -217,6 +252,7 @@ export default function Modal({ativa, children}: ModalProps){
                                   <StyledLabels>
                                     <label> 
                                         <input 
+                                        className='radio'
                                         type="radio" 
                                         value='Solar'
                                         name='subclasse'
@@ -225,6 +261,7 @@ export default function Modal({ativa, children}: ModalProps){
                                     /> Solar</label>
                                     <label>
                                     <input 
+                                        className='radio'
                                         type="radio" 
                                         value="Vacuo"
                                         name='subclasse'
@@ -233,6 +270,7 @@ export default function Modal({ativa, children}: ModalProps){
                                     />Vácuo</label>
                                     <label>
                                         <input 
+                                            className='radio'
                                             type="radio" 
                                             value="Arco"
                                             name='subclasse'
@@ -243,6 +281,7 @@ export default function Modal({ativa, children}: ModalProps){
                                       </label>
                                       <label>
                                         <input 
+                                            className='radio'
                                             type="radio" 
                                             value="Strand"
                                             name='subclasse'
@@ -253,6 +292,7 @@ export default function Modal({ativa, children}: ModalProps){
                                       </label>
                                       <label>
                                         <input 
+                                            className='radio'
                                             type="radio" 
                                             value="Stasis"
                                             name='subclasse'
@@ -272,6 +312,7 @@ export default function Modal({ativa, children}: ModalProps){
                         </form> 
                 </section>
             </ModalDiv>
+          </>
         )
     }
     return(

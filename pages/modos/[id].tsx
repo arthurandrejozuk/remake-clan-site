@@ -73,6 +73,7 @@ const ModosContainer = styled.div`
         margin-top: 12px;
     }
     h1, h2{
+        text-align: center;
         text-shadow: 1px 1px 2px gray;
     }
     p{
