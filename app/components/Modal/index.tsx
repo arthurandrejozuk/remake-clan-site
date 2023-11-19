@@ -107,6 +107,8 @@ const ModalDiv = styled.div`
           border-bottom: none;
           background-color:#e9d6bf;
           font-size: 32px;
+          padding: 10px;
+          border-radius: 100%;
         }
       }
   @media(max-width: 500px){
