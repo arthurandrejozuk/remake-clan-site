@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 //chaves que estarão no .env
 // const SUPABASE_URL = process.env.SUPABASE_URL;
 // const SUPABASE_KEY = process.env.SUPABASE_KEY; 
-const dbClient = createClient("https://joxjgdureqxzledklsuv.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpveGpnZHVyZXF4emxlZGtsc3V2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NjUxMDAzMCwiZXhwIjoyMDEyMDg2MDMwfQ.Tm2CJXcc8pes8Jtvb9gPAOIGASHUsj7A7Yn9_KHT3HM")
+const dbClient = createClient("https://joxjgdureqxzledklsuv.supabase.co","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpveGpnZHVyZXF4emxlZGtsc3V2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTY1MTAwMzAsImV4cCI6MjAxMjA4NjAzMH0.RU-4ZG4m0qJMp0hfOGyut1S5rfm3fKhHzgzZpsNa_9o")
 
 //configurando os status padrões
 const httpStatus = {

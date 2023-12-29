@@ -1,8 +1,10 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.js",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html",
   "/api/guardioes/optin": "pages/api/guardioes/optin.js",
-  "/": "pages/index.js"
+  "/clan": "pages/clan.html",
+  "/": "pages/index.html",
+  "/modos/[id]": "pages/modos/[id].js"
 }
