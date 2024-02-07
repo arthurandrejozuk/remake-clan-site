@@ -80,17 +80,17 @@ export default function PersonagensBanco() {
     const [quantidade, setQuantidade] = useState(1)
     const [botao, setBotao] = useState("Ver mais")
     const [data, setData] = useState([]);
-    const doisPersonagens = data.slice(0, quantidade)
+    const doisPersonagens = data?.slice(0, quantidade)
     const [ativado, setAtivado] = useState(false)
 
    
     
 
     function mostraPersonagens(quantidade, setQuantidade, setBotao) {
-        if (quantidade !== data.length) {
+        if (quantidade !== data?.length) {
             setQuantidade(quantidade + 1)
         }
-        if (quantidade >=  data.length) {
+        if (quantidade >=  data?.length) {
             setBotao("Acabou...")
         }
     }
@@ -115,7 +115,7 @@ export default function PersonagensBanco() {
 
     return (
         <>                                 
-            {doisPersonagens.map((personagem: CaractersProps) => {
+            {doisPersonagens?.map((personagem: CaractersProps) => {
                 return (
                         <PersonagemDiv key={personagem.key} style={{ backgroundColor: `rgba(${personagem.classe === "Caçador" ? "08,83,95, 0.8" : personagem.classe === "Titan" ? "183,58,79, 0.8" : personagem.classe === "Arcano"? "203,160,68,0.8" : null})` }}>
 

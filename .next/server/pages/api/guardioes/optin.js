@@ -1,138 +1,95 @@
 "use strict";
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
 (() => {
 var exports = {};
-exports.id = 342;
-exports.ids = [342];
+exports.id = "pages/api/guardioes/optin";
+exports.ids = ["pages/api/guardioes/optin"];
 exports.modules = {
 
-/***/ 730:
+/***/ "@supabase/supabase-js":
+/*!****************************************!*\
+  !*** external "@supabase/supabase-js" ***!
+  \****************************************/
+/***/ ((module) => {
+
+module.exports = require("@supabase/supabase-js");
+
+/***/ }),
+
+/***/ "../../../api-utils/node":
+/*!*****************************************************!*\
+  !*** external "next/dist/server/api-utils/node.js" ***!
+  \*****************************************************/
 /***/ ((module) => {
 
 module.exports = require("next/dist/server/api-utils/node.js");
 
 /***/ }),
 
-/***/ 3076:
+/***/ "../route-module":
+/*!************************************************************************!*\
+  !*** external "next/dist/server/future/route-modules/route-module.js" ***!
+  \************************************************************************/
 /***/ ((module) => {
 
 module.exports = require("next/dist/server/future/route-modules/route-module.js");
 
 /***/ }),
 
-/***/ 5249:
+/***/ "(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/helpers.js":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-route-loader/helpers.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("/**\n * Hoists a name from a module or promised module.\n *\n * @param module the module to hoist the name from\n * @param name the name to hoist\n * @returns the value on the module (or promised module)\n */ \nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nObject.defineProperty(exports, \"hoist\", ({\n    enumerable: true,\n    get: function() {\n        return hoist;\n    }\n}));\nfunction hoist(module, name) {\n    // If the name is available in the module, return it.\n    if (name in module) {\n        return module[name];\n    }\n    // If a property called `then` exists, assume it's a promise and\n    // return a promise that resolves to the name.\n    if (\"then\" in module && typeof module.then === \"function\") {\n        return module.then((mod)=>hoist(mod, name));\n    }\n    // If we're trying to hoise the default export, and the module is a function,\n    // return the module itself.\n    if (typeof module === \"function\" && name === \"default\") {\n        return module;\n    }\n    // Otherwise, return undefined.\n    return undefined;\n}\n\n//# sourceMappingURL=helpers.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LXJvdXRlLWxvYWRlci9oZWxwZXJzLmpzIiwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLElBQWlCO0FBQ2pCLDhDQUE2QztBQUM3QztBQUNBLENBQUMsRUFBQztBQUNGLHlDQUF3QztBQUN4QztBQUNBO0FBQ0E7QUFDQTtBQUNBLENBQUMsRUFBQztBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQSIsInNvdXJjZXMiOlsid2VicGFjazovL3JlbWFrZS1jbGFuLXNpdGUvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LXJvdXRlLWxvYWRlci9oZWxwZXJzLmpzPzFlMmIiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBIb2lzdHMgYSBuYW1lIGZyb20gYSBtb2R1bGUgb3IgcHJvbWlzZWQgbW9kdWxlLlxuICpcbiAqIEBwYXJhbSBtb2R1bGUgdGhlIG1vZHVsZSB0byBob2lzdCB0aGUgbmFtZSBmcm9tXG4gKiBAcGFyYW0gbmFtZSB0aGUgbmFtZSB0byBob2lzdFxuICogQHJldHVybnMgdGhlIHZhbHVlIG9uIHRoZSBtb2R1bGUgKG9yIHByb21pc2VkIG1vZHVsZSlcbiAqLyBcInVzZSBzdHJpY3RcIjtcbk9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCBcIl9fZXNNb2R1bGVcIiwge1xuICAgIHZhbHVlOiB0cnVlXG59KTtcbk9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCBcImhvaXN0XCIsIHtcbiAgICBlbnVtZXJhYmxlOiB0cnVlLFxuICAgIGdldDogZnVuY3Rpb24oKSB7XG4gICAgICAgIHJldHVybiBob2lzdDtcbiAgICB9XG59KTtcbmZ1bmN0aW9uIGhvaXN0KG1vZHVsZSwgbmFtZSkge1xuICAgIC8vIElmIHRoZSBuYW1lIGlzIGF2YWlsYWJsZSBpbiB0aGUgbW9kdWxlLCByZXR1cm4gaXQuXG4gICAgaWYgKG5hbWUgaW4gbW9kdWxlKSB7XG4gICAgICAgIHJldHVybiBtb2R1bGVbbmFtZV07XG4gICAgfVxuICAgIC8vIElmIGEgcHJvcGVydHkgY2FsbGVkIGB0aGVuYCBleGlzdHMsIGFzc3VtZSBpdCdzIGEgcHJvbWlzZSBhbmRcbiAgICAvLyByZXR1cm4gYSBwcm9taXNlIHRoYXQgcmVzb2x2ZXMgdG8gdGhlIG5hbWUuXG4gICAgaWYgKFwidGhlblwiIGluIG1vZHVsZSAmJiB0eXBlb2YgbW9kdWxlLnRoZW4gPT09IFwiZnVuY3Rpb25cIikge1xuICAgICAgICByZXR1cm4gbW9kdWxlLnRoZW4oKG1vZCk9PmhvaXN0KG1vZCwgbmFtZSkpO1xuICAgIH1cbiAgICAvLyBJZiB3ZSdyZSB0cnlpbmcgdG8gaG9pc2UgdGhlIGRlZmF1bHQgZXhwb3J0LCBhbmQgdGhlIG1vZHVsZSBpcyBhIGZ1bmN0aW9uLFxuICAgIC8vIHJldHVybiB0aGUgbW9kdWxlIGl0c2VsZi5cbiAgICBpZiAodHlwZW9mIG1vZHVsZSA9PT0gXCJmdW5jdGlvblwiICYmIG5hbWUgPT09IFwiZGVmYXVsdFwiKSB7XG4gICAgICAgIHJldHVybiBtb2R1bGU7XG4gICAgfVxuICAgIC8vIE90aGVyd2lzZSwgcmV0dXJuIHVuZGVmaW5lZC5cbiAgICByZXR1cm4gdW5kZWZpbmVkO1xufVxuXG4vLyMgc291cmNlTWFwcGluZ1VSTD1oZWxwZXJzLmpzLm1hcCJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/helpers.js\n");
+
+/***/ }),
+
+/***/ "(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fguardioes%2Foptin&preferredRegion=&absolutePagePath=.%2Fpages%5Capi%5Cguardioes%5Coptin.ts&middlewareConfigBase64=e30%3D!":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fguardioes%2Foptin&preferredRegion=&absolutePagePath=.%2Fpages%5Capi%5Cguardioes%5Coptin.ts&middlewareConfigBase64=e30%3D! ***!
+  \****************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   config: () => (/* binding */ config),\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   routeModule: () => (/* binding */ routeModule)\n/* harmony export */ });\n/* harmony import */ var next_dist_server_future_route_modules_pages_api_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! next/dist/server/future/route-modules/pages-api/module */ \"(api)/./node_modules/next/dist/server/future/route-modules/pages-api/module.js\");\n/* harmony import */ var next_dist_server_future_route_modules_pages_api_module__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(next_dist_server_future_route_modules_pages_api_module__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/dist/server/future/route-kind */ \"(api)/./node_modules/next/dist/server/future/route-kind.js\");\n/* harmony import */ var next_dist_build_webpack_loaders_next_route_loader_helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/dist/build/webpack/loaders/next-route-loader/helpers */ \"(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/helpers.js\");\n/* harmony import */ var _pages_api_guardioes_optin_ts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages\\api\\guardioes\\optin.ts */ \"(api)/./pages/api/guardioes/optin.ts\");\n// @ts-ignore this need to be imported from next/dist to be external\n\n\n\nconst PagesAPIRouteModule = next_dist_server_future_route_modules_pages_api_module__WEBPACK_IMPORTED_MODULE_0__.PagesAPIRouteModule;\n// Import the userland code.\n// @ts-expect-error - replaced by webpack/turbopack loader\n\n// Re-export the handler (should be the default export).\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,next_dist_build_webpack_loaders_next_route_loader_helpers__WEBPACK_IMPORTED_MODULE_2__.hoist)(_pages_api_guardioes_optin_ts__WEBPACK_IMPORTED_MODULE_3__, \"default\"));\n// Re-export config.\nconst config = (0,next_dist_build_webpack_loaders_next_route_loader_helpers__WEBPACK_IMPORTED_MODULE_2__.hoist)(_pages_api_guardioes_optin_ts__WEBPACK_IMPORTED_MODULE_3__, \"config\");\n// Create and export the route module that will be consumed.\nconst routeModule = new PagesAPIRouteModule({\n    definition: {\n        kind: next_dist_server_future_route_kind__WEBPACK_IMPORTED_MODULE_1__.RouteKind.PAGES_API,\n        page: \"/api/guardioes/optin\",\n        pathname: \"/api/guardioes/optin\",\n        // The following aren't used in production.\n        bundlePath: \"\",\n        filename: \"\"\n    },\n    userland: _pages_api_guardioes_optin_ts__WEBPACK_IMPORTED_MODULE_3__\n});\n\n//# sourceMappingURL=pages-api.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L2J1aWxkL3dlYnBhY2svbG9hZGVycy9uZXh0LXJvdXRlLWxvYWRlci9pbmRleC5qcz9raW5kPVBBR0VTX0FQSSZwYWdlPSUyRmFwaSUyRmd1YXJkaW9lcyUyRm9wdGluJnByZWZlcnJlZFJlZ2lvbj0mYWJzb2x1dGVQYWdlUGF0aD0uJTJGcGFnZXMlNUNhcGklNUNndWFyZGlvZXMlNUNvcHRpbi50cyZtaWRkbGV3YXJlQ29uZmlnQmFzZTY0PWUzMCUzRCEiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7QUFBQTtBQUNpRjtBQUNsQjtBQUNtQjtBQUNsRiw0QkFBNEIsdUdBQTBCO0FBQ3REO0FBQ0E7QUFDOEQ7QUFDOUQ7QUFDQSxpRUFBZSxnR0FBSyxDQUFDLDBEQUFRLFlBQVksRUFBQztBQUMxQztBQUNPLGVBQWUsZ0dBQUssQ0FBQywwREFBUTtBQUNwQztBQUNPO0FBQ1A7QUFDQSxjQUFjLHlFQUFTO0FBQ3ZCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxLQUFLO0FBQ0wsWUFBWTtBQUNaLENBQUM7O0FBRUQiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9yZW1ha2UtY2xhbi1zaXRlLz9lZTQ3Il0sInNvdXJjZXNDb250ZW50IjpbIi8vIEB0cy1pZ25vcmUgdGhpcyBuZWVkIHRvIGJlIGltcG9ydGVkIGZyb20gbmV4dC9kaXN0IHRvIGJlIGV4dGVybmFsXG5pbXBvcnQgKiBhcyBtb2R1bGUgZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvZnV0dXJlL3JvdXRlLW1vZHVsZXMvcGFnZXMtYXBpL21vZHVsZVwiO1xuaW1wb3J0IHsgUm91dGVLaW5kIH0gZnJvbSBcIm5leHQvZGlzdC9zZXJ2ZXIvZnV0dXJlL3JvdXRlLWtpbmRcIjtcbmltcG9ydCB7IGhvaXN0IH0gZnJvbSBcIm5leHQvZGlzdC9idWlsZC93ZWJwYWNrL2xvYWRlcnMvbmV4dC1yb3V0ZS1sb2FkZXIvaGVscGVyc1wiO1xuY29uc3QgUGFnZXNBUElSb3V0ZU1vZHVsZSA9IG1vZHVsZS5QYWdlc0FQSVJvdXRlTW9kdWxlO1xuLy8gSW1wb3J0IHRoZSB1c2VybGFuZCBjb2RlLlxuLy8gQHRzLWV4cGVjdC1lcnJvciAtIHJlcGxhY2VkIGJ5IHdlYnBhY2svdHVyYm9wYWNrIGxvYWRlclxuaW1wb3J0ICogYXMgdXNlcmxhbmQgZnJvbSBcIi4vcGFnZXNcXFxcYXBpXFxcXGd1YXJkaW9lc1xcXFxvcHRpbi50c1wiO1xuLy8gUmUtZXhwb3J0IHRoZSBoYW5kbGVyIChzaG91bGQgYmUgdGhlIGRlZmF1bHQgZXhwb3J0KS5cbmV4cG9ydCBkZWZhdWx0IGhvaXN0KHVzZXJsYW5kLCBcImRlZmF1bHRcIik7XG4vLyBSZS1leHBvcnQgY29uZmlnLlxuZXhwb3J0IGNvbnN0IGNvbmZpZyA9IGhvaXN0KHVzZXJsYW5kLCBcImNvbmZpZ1wiKTtcbi8vIENyZWF0ZSBhbmQgZXhwb3J0IHRoZSByb3V0ZSBtb2R1bGUgdGhhdCB3aWxsIGJlIGNvbnN1bWVkLlxuZXhwb3J0IGNvbnN0IHJvdXRlTW9kdWxlID0gbmV3IFBhZ2VzQVBJUm91dGVNb2R1bGUoe1xuICAgIGRlZmluaXRpb246IHtcbiAgICAgICAga2luZDogUm91dGVLaW5kLlBBR0VTX0FQSSxcbiAgICAgICAgcGFnZTogXCIvYXBpL2d1YXJkaW9lcy9vcHRpblwiLFxuICAgICAgICBwYXRobmFtZTogXCIvYXBpL2d1YXJkaW9lcy9vcHRpblwiLFxuICAgICAgICAvLyBUaGUgZm9sbG93aW5nIGFyZW4ndCB1c2VkIGluIHByb2R1Y3Rpb24uXG4gICAgICAgIGJ1bmRsZVBhdGg6IFwiXCIsXG4gICAgICAgIGZpbGVuYW1lOiBcIlwiXG4gICAgfSxcbiAgICB1c2VybGFuZFxufSk7XG5cbi8vIyBzb3VyY2VNYXBwaW5nVVJMPXBhZ2VzLWFwaS5qcy5tYXAiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fguardioes%2Foptin&preferredRegion=&absolutePagePath=.%2Fpages%5Capi%5Cguardioes%5Coptin.ts&middlewareConfigBase64=e30%3D!\n");
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  config: () => (/* binding */ config),
-  "default": () => (/* binding */ next_route_loaderkind_PAGES_API_page_2Fapi_2Fguardioes_2Foptin_preferredRegion_absolutePagePath_private_next_pages_2Fapi_2Fguardioes_2Foptin_ts_middlewareConfigBase64_e30_3D_),
-  routeModule: () => (/* binding */ routeModule)
-});
+/***/ }),
 
-// NAMESPACE OBJECT: ./pages/api/guardioes/optin.ts
-var optin_namespaceObject = {};
-__webpack_require__.r(optin_namespaceObject);
-__webpack_require__.d(optin_namespaceObject, {
-  "default": () => (handler)
-});
+/***/ "(api)/./pages/api/guardioes/optin.ts":
+/*!**************************************!*\
+  !*** ./pages/api/guardioes/optin.ts ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-// EXTERNAL MODULE: ./node_modules/next/dist/server/future/route-modules/pages-api/module.js
-var pages_api_module = __webpack_require__(6429);
-// EXTERNAL MODULE: ./node_modules/next/dist/server/future/route-kind.js
-var route_kind = __webpack_require__(7153);
-// EXTERNAL MODULE: ./node_modules/next/dist/build/webpack/loaders/next-route-loader/helpers.js
-var helpers = __webpack_require__(7305);
-;// CONCATENATED MODULE: external "@supabase/supabase-js"
-const supabase_js_namespaceObject = require("@supabase/supabase-js");
-;// CONCATENATED MODULE: ./pages/api/guardioes/optin.ts
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ handler)\n/* harmony export */ });\n/* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @supabase/supabase-js */ \"@supabase/supabase-js\");\n/* harmony import */ var _supabase_supabase_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_0__);\n\n//chaves que estarão no .env\n// const SUPABASE_URL = process.env.SUPABASE_URL;\n// const SUPABASE_KEY = process.env.SUPABASE_KEY; \nconst dbClient = (0,_supabase_supabase_js__WEBPACK_IMPORTED_MODULE_0__.createClient)(\"https://joxjgdureqxzledklsuv.supabase.co\", \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpveGpnZHVyZXF4emxlZGtsc3V2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTY1MTAwMzAsImV4cCI6MjAxMjA4NjAzMH0.RU-4ZG4m0qJMp0hfOGyut1S5rfm3fKhHzgzZpsNa_9o\");\n//configurando os status padrões\nconst httpStatus = {\n    Success: 200,\n    BadRequest: 400,\n    Failure: 500\n};\n//aqui você colocara os metodos CRUD \nconst controllerByMethods = {\n    async POST (req, res) {\n        // veremos mais como utilizar esse metodo para cadastrar no banco de dados\n        const { nome, classe, subclasse, descricao, imagem } = req.body;\n        //Aqui colocaremos os valores pegos lá no modal no banco de dados\n        await dbClient.from(\"guardian\").insert({\n            nome: nome,\n            classe: classe,\n            subclasse: subclasse,\n            descricao: descricao,\n            imagem: imagem\n        });\n        await dbClient.auth.admin.createUser({});\n        res.status(httpStatus.Success).json({\n            messsage: \"Cadastrado\",\n            nome\n        });\n        return;\n    },\n    async GET (req, res) {\n        // pegando os dados do dbClient no caso data = dados error = caso não seja possivel conectar devido a algum erro\n        const { data, error } = await dbClient.from(\"guardian\").select(\"*\");\n        if (data) {\n            res.status(httpStatus.Success).json({\n                message: \"Get request!\",\n                data\n            });\n            return;\n        }\n        res.status(httpStatus.BadRequest).json({\n            message: \"N\\xe3o foi possivel usar o methodo\",\n            error\n        });\n        return;\n    }\n};\nasync function handler(req, res) {\n    //handler será que metodo foi requisitado, caso o tal metodo não exista então um erro ocorrerá\n    const controller = controllerByMethods[req.method];\n    // if(!controller){\n    //     res.status(httpStatus.Failure).json({ error: \"Method not allowed\" });;\n    //     return;\n    // }\n    await controller(req, res);\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvZ3VhcmRpb2VzL29wdGluLnRzIiwibWFwcGluZ3MiOiI7Ozs7OztBQUNxRDtBQUVyRCw0QkFBNEI7QUFDNUIsaURBQWlEO0FBQ2pELGtEQUFrRDtBQUNsRCxNQUFNQyxXQUFXRCxtRUFBWUEsQ0FBQyw0Q0FBMkM7QUFFekUsZ0NBQWdDO0FBQ2hDLE1BQU1FLGFBQWE7SUFDZkMsU0FBUztJQUNUQyxZQUFZO0lBQ1pDLFNBQVM7QUFDYjtBQUNBLHFDQUFxQztBQUNyQyxNQUFNQyxzQkFBc0I7SUFFeEIsTUFBTUMsTUFBS0MsR0FBa0IsRUFBRUMsR0FBbUI7UUFDbEQsMEVBQTBFO1FBQ3RFLE1BQU0sRUFBQ0MsSUFBSSxFQUFFQyxNQUFNLEVBQUVDLFNBQVMsRUFBRUMsU0FBUyxFQUFFQyxNQUFNLEVBQUMsR0FBR04sSUFBSU8sSUFBSTtRQUVqRSxpRUFBaUU7UUFDN0QsTUFBTWQsU0FBU2UsSUFBSSxDQUFDLFlBQVlDLE1BQU0sQ0FBQztZQUFDUCxNQUFLQTtZQUFNQyxRQUFPQTtZQUFRQyxXQUFVQTtZQUFXQyxXQUFXQTtZQUFXQyxRQUFPQTtRQUFNO1FBQzFILE1BQU1iLFNBQVNpQixJQUFJLENBQUNDLEtBQUssQ0FBQ0MsVUFBVSxDQUFDLENBQUM7UUFDdENYLElBQ0NZLE1BQU0sQ0FBQ25CLFdBQVdDLE9BQU8sRUFDekJtQixJQUFJLENBQUM7WUFBRUMsVUFBUztZQUFjYjtRQUFLO1FBQ3BDO0lBQ0o7SUFDQSxNQUFNYyxLQUFJaEIsR0FBa0IsRUFBRUMsR0FBbUI7UUFDN0MsZ0hBQWdIO1FBQ2hILE1BQU0sRUFBQ2dCLElBQUksRUFBRUMsS0FBSyxFQUFDLEdBQUcsTUFBTXpCLFNBQVNlLElBQUksQ0FBQyxZQUFZVyxNQUFNLENBQUM7UUFDN0QsSUFBR0YsTUFBSztZQUNKaEIsSUFDS1ksTUFBTSxDQUFDbkIsV0FBV0MsT0FBTyxFQUN6Qm1CLElBQUksQ0FBQztnQkFBQ00sU0FBUztnQkFBZ0JIO1lBQUk7WUFDcEM7UUFDUjtRQUNBaEIsSUFBSVksTUFBTSxDQUFDbkIsV0FBV0UsVUFBVSxFQUMzQmtCLElBQUksQ0FBQztZQUFDTSxTQUFTO1lBQW1DRjtRQUFLO1FBQ3hEO0lBQ1I7QUFDSjtBQUllLGVBQWVHLFFBQVNyQixHQUFrQixFQUFFQyxHQUFtQjtJQUMxRSw4RkFBOEY7SUFDOUYsTUFBTXFCLGFBQWF4QixtQkFBbUIsQ0FBQ0UsSUFBSXVCLE1BQU0sQ0FBVztJQUM1RCxtQkFBbUI7SUFDbkIsNkVBQTZFO0lBQzdFLGNBQWM7SUFDZCxJQUFJO0lBQ0osTUFBTUQsV0FBV3RCLEtBQUtDO0FBQzFCIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vcmVtYWtlLWNsYW4tc2l0ZS8uL3BhZ2VzL2FwaS9ndWFyZGlvZXMvb3B0aW4udHM/MzhmYiJdLCJzb3VyY2VzQ29udGVudCI6WyJcclxuaW1wb3J0IHsgY3JlYXRlQ2xpZW50IH0gZnJvbSBcIkBzdXBhYmFzZS9zdXBhYmFzZS1qc1wiO1xyXG5pbXBvcnQgeyBOZXh0QXBpUmVxdWVzdCwgTmV4dEFwaVJlc3BvbnNlIH0gZnJvbSBcIm5leHRcIjtcclxuLy9jaGF2ZXMgcXVlIGVzdGFyw6NvIG5vIC5lbnZcclxuLy8gY29uc3QgU1VQQUJBU0VfVVJMID0gcHJvY2Vzcy5lbnYuU1VQQUJBU0VfVVJMO1xyXG4vLyBjb25zdCBTVVBBQkFTRV9LRVkgPSBwcm9jZXNzLmVudi5TVVBBQkFTRV9LRVk7IFxyXG5jb25zdCBkYkNsaWVudCA9IGNyZWF0ZUNsaWVudChcImh0dHBzOi8vam94amdkdXJlcXh6bGVka2xzdXYuc3VwYWJhc2UuY29cIixcImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpwYzNNaU9pSnpkWEJoWW1GelpTSXNJbkpsWmlJNkltcHZlR3BuWkhWeVpYRjRlbXhsWkd0c2MzVjJJaXdpY205c1pTSTZJbUZ1YjI0aUxDSnBZWFFpT2pFMk9UWTFNVEF3TXpBc0ltVjRjQ0k2TWpBeE1qQTROakF6TUgwLlJVLTRaRzRtMHFKTXAwaGZPR3l1dDFTNXJmbTNmS2hIemd6WnBzTmFfOW9cIilcclxuXHJcbi8vY29uZmlndXJhbmRvIG9zIHN0YXR1cyBwYWRyw7Vlc1xyXG5jb25zdCBodHRwU3RhdHVzID0ge1xyXG4gICAgU3VjY2VzczogMjAwLFxyXG4gICAgQmFkUmVxdWVzdDogNDAwLFxyXG4gICAgRmFpbHVyZTogNTAwXHJcbn1cclxuLy9hcXVpIHZvY8OqIGNvbG9jYXJhIG9zIG1ldG9kb3MgQ1JVRCBcclxuY29uc3QgY29udHJvbGxlckJ5TWV0aG9kcyA9IHtcclxuXHJcbiAgICBhc3luYyBQT1NUKHJlcTpOZXh0QXBpUmVxdWVzdCwgcmVzOk5leHRBcGlSZXNwb25zZSl7XHJcbiAgICAvLyB2ZXJlbW9zIG1haXMgY29tbyB1dGlsaXphciBlc3NlIG1ldG9kbyBwYXJhIGNhZGFzdHJhciBubyBiYW5jbyBkZSBkYWRvc1xyXG4gICAgICAgIGNvbnN0IHtub21lLCBjbGFzc2UsIHN1YmNsYXNzZSwgZGVzY3JpY2FvLCBpbWFnZW19ID0gcmVxLmJvZHlcclxuICAgXHJcbiAgICAvL0FxdWkgY29sb2NhcmVtb3Mgb3MgdmFsb3JlcyBwZWdvcyBsw6Egbm8gbW9kYWwgbm8gYmFuY28gZGUgZGFkb3NcclxuICAgICAgICBhd2FpdCBkYkNsaWVudC5mcm9tKFwiZ3VhcmRpYW5cIikuaW5zZXJ0KHtub21lOm5vbWUsIGNsYXNzZTpjbGFzc2UsIHN1YmNsYXNzZTpzdWJjbGFzc2UsIGRlc2NyaWNhbzogZGVzY3JpY2FvLCBpbWFnZW06aW1hZ2VtfSlcclxuICAgICAgICBhd2FpdCBkYkNsaWVudC5hdXRoLmFkbWluLmNyZWF0ZVVzZXIoe30pXHJcbiAgICAgICAgcmVzXHJcbiAgICAgICAgLnN0YXR1cyhodHRwU3RhdHVzLlN1Y2Nlc3MpXHJcbiAgICAgICAgLmpzb24oeyBtZXNzc2FnZTpcIkNhZGFzdHJhZG9cIiwgbm9tZSB9KTtcclxuICAgICAgICByZXR1cm5cclxuICAgIH0sXHJcbiAgICBhc3luYyBHRVQocmVxOk5leHRBcGlSZXF1ZXN0LCByZXM6TmV4dEFwaVJlc3BvbnNlKXtcclxuICAgICAgICAvLyBwZWdhbmRvIG9zIGRhZG9zIGRvIGRiQ2xpZW50IG5vIGNhc28gZGF0YSA9IGRhZG9zIGVycm9yID0gY2FzbyBuw6NvIHNlamEgcG9zc2l2ZWwgY29uZWN0YXIgZGV2aWRvIGEgYWxndW0gZXJyb1xyXG4gICAgICAgIGNvbnN0IHtkYXRhLCBlcnJvcn0gPSBhd2FpdCBkYkNsaWVudC5mcm9tKCdndWFyZGlhbicpLnNlbGVjdChcIipcIilcclxuICAgICAgICBpZihkYXRhKXtcclxuICAgICAgICAgICAgcmVzXHJcbiAgICAgICAgICAgICAgICAuc3RhdHVzKGh0dHBTdGF0dXMuU3VjY2VzcylcclxuICAgICAgICAgICAgICAgIC5qc29uKHttZXNzYWdlOiBcIkdldCByZXF1ZXN0IVwiLCBkYXRhfSk7XHJcbiAgICAgICAgICAgICAgICByZXR1cm5cclxuICAgICAgICB9IFxyXG4gICAgICAgIHJlcy5zdGF0dXMoaHR0cFN0YXR1cy5CYWRSZXF1ZXN0KVxyXG4gICAgICAgICAgICAuanNvbih7bWVzc2FnZTogXCJOw6NvIGZvaSBwb3NzaXZlbCB1c2FyIG8gbWV0aG9kb1wiLCBlcnJvcn0pXHJcbiAgICAgICAgICAgIHJldHVyblxyXG4gICAgfVxyXG59XHJcblxyXG5cclxuXHJcbmV4cG9ydCBkZWZhdWx0IGFzeW5jIGZ1bmN0aW9uIGhhbmRsZXIgKHJlcTpOZXh0QXBpUmVxdWVzdCwgcmVzOk5leHRBcGlSZXNwb25zZSkge1xyXG4gICAgLy9oYW5kbGVyIHNlcsOhIHF1ZSBtZXRvZG8gZm9pIHJlcXVpc2l0YWRvLCBjYXNvIG8gdGFsIG1ldG9kbyBuw6NvIGV4aXN0YSBlbnTDo28gdW0gZXJybyBvY29ycmVyw6FcclxuICAgIGNvbnN0IGNvbnRyb2xsZXIgPSBjb250cm9sbGVyQnlNZXRob2RzW3JlcS5tZXRob2QgYXMgc3RyaW5nXTtcclxuICAgIC8vIGlmKCFjb250cm9sbGVyKXtcclxuICAgIC8vICAgICByZXMuc3RhdHVzKGh0dHBTdGF0dXMuRmFpbHVyZSkuanNvbih7IGVycm9yOiBcIk1ldGhvZCBub3QgYWxsb3dlZFwiIH0pOztcclxuICAgIC8vICAgICByZXR1cm47XHJcbiAgICAvLyB9XHJcbiAgICBhd2FpdCBjb250cm9sbGVyKHJlcSwgcmVzKTtcclxufSJdLCJuYW1lcyI6WyJjcmVhdGVDbGllbnQiLCJkYkNsaWVudCIsImh0dHBTdGF0dXMiLCJTdWNjZXNzIiwiQmFkUmVxdWVzdCIsIkZhaWx1cmUiLCJjb250cm9sbGVyQnlNZXRob2RzIiwiUE9TVCIsInJlcSIsInJlcyIsIm5vbWUiLCJjbGFzc2UiLCJzdWJjbGFzc2UiLCJkZXNjcmljYW8iLCJpbWFnZW0iLCJib2R5IiwiZnJvbSIsImluc2VydCIsImF1dGgiLCJhZG1pbiIsImNyZWF0ZVVzZXIiLCJzdGF0dXMiLCJqc29uIiwibWVzc3NhZ2UiLCJHRVQiLCJkYXRhIiwiZXJyb3IiLCJzZWxlY3QiLCJtZXNzYWdlIiwiaGFuZGxlciIsImNvbnRyb2xsZXIiLCJtZXRob2QiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./pages/api/guardioes/optin.ts\n");
 
-//chaves que estarão no .env
-// const SUPABASE_URL = process.env.SUPABASE_URL;
-// const SUPABASE_KEY = process.env.SUPABASE_KEY; 
-const dbClient = (0,supabase_js_namespaceObject.createClient)("https://joxjgdureqxzledklsuv.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpveGpnZHVyZXF4emxlZGtsc3V2Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY5NjUxMDAzMCwiZXhwIjoyMDEyMDg2MDMwfQ.Tm2CJXcc8pes8Jtvb9gPAOIGASHUsj7A7Yn9_KHT3HM");
-//configurando os status padrões
-const httpStatus = {
-    Success: 200,
-    BadRequest: 400,
-    Failure: 500
-};
-//aqui você colocara os metodos CRUD 
-const controllerByMethods = {
-    async POST (req, res) {
-        // veremos mais como utilizar esse metodo para cadastrar no banco de dados
-        const { nome, classe, subclasse, descricao, imagem } = req.body;
-        //Aqui colocaremos os valores pegos lá no modal no banco de dados
-        await dbClient.from("guardian").insert({
-            nome: nome,
-            classe: classe,
-            subclasse: subclasse,
-            descricao: descricao,
-            imagem: imagem
-        });
-        await dbClient.auth.admin.createUser({});
-        res.status(httpStatus.Success).json({
-            messsage: "Cadastrado",
-            nome
-        });
-        return;
-    },
-    async GET (req, res) {
-        // pegando os dados do dbClient no caso data = dados error = caso não seja possivel conectar devido a algum erro
-        const { data, error } = await dbClient.from("guardian").select("*");
-        if (data) {
-            res.status(httpStatus.Success).json({
-                message: "Get request!",
-                data
-            });
-            return;
-        }
-        res.status(httpStatus.BadRequest).json({
-            message: "N\xe3o foi possivel usar o methodo",
-            error
-        });
-        return;
-    }
-};
-async function handler(req, res) {
-    //handler será que metodo foi requisitado, caso o tal metodo não exista então um erro ocorrerá
-    const controller = controllerByMethods[req.method];
-    // if(!controller){
-    //     res.status(httpStatus.Failure).json({ error: "Method not allowed" });;
-    //     return;
-    // }
-    await controller(req, res);
-}
+/***/ }),
 
-;// CONCATENATED MODULE: ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fguardioes%2Foptin&preferredRegion=&absolutePagePath=private-next-pages%2Fapi%2Fguardioes%2Foptin.ts&middlewareConfigBase64=e30%3D!
-// @ts-ignore this need to be imported from next/dist to be external
+/***/ "(api)/./node_modules/next/dist/server/future/route-kind.js":
+/*!************************************************************!*\
+  !*** ./node_modules/next/dist/server/future/route-kind.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, exports) => {
 
+eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\nObject.defineProperty(exports, \"RouteKind\", ({\n    enumerable: true,\n    get: function() {\n        return RouteKind;\n    }\n}));\nvar RouteKind;\n(function(RouteKind) {\n    RouteKind[/**\n   * `PAGES` represents all the React pages that are under `pages/`.\n   */ \"PAGES\"] = \"PAGES\";\n    RouteKind[/**\n   * `PAGES_API` represents all the API routes under `pages/api/`.\n   */ \"PAGES_API\"] = \"PAGES_API\";\n    RouteKind[/**\n   * `APP_PAGE` represents all the React pages that are under `app/` with the\n   * filename of `page.{j,t}s{,x}`.\n   */ \"APP_PAGE\"] = \"APP_PAGE\";\n    RouteKind[/**\n   * `APP_ROUTE` represents all the API routes and metadata routes that are under `app/` with the\n   * filename of `route.{j,t}s{,x}`.\n   */ \"APP_ROUTE\"] = \"APP_ROUTE\";\n})(RouteKind || (RouteKind = {}));\n\n//# sourceMappingURL=route-kind.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L3NlcnZlci9mdXR1cmUvcm91dGUta2luZC5qcyIsIm1hcHBpbmdzIjoiQUFBYTtBQUNiLDhDQUE2QztBQUM3QztBQUNBLENBQUMsRUFBQztBQUNGLDZDQUE0QztBQUM1QztBQUNBO0FBQ0E7QUFDQTtBQUNBLENBQUMsRUFBQztBQUNGO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0Esd0JBQXdCLElBQUksRUFBRSxHQUFHO0FBQ2pDO0FBQ0E7QUFDQTtBQUNBLHlCQUF5QixJQUFJLEVBQUUsR0FBRztBQUNsQztBQUNBLENBQUMsOEJBQThCOztBQUUvQiIsInNvdXJjZXMiOlsid2VicGFjazovL3JlbWFrZS1jbGFuLXNpdGUvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L3NlcnZlci9mdXR1cmUvcm91dGUta2luZC5qcz9lYmQ2Il0sInNvdXJjZXNDb250ZW50IjpbIlwidXNlIHN0cmljdFwiO1xuT2JqZWN0LmRlZmluZVByb3BlcnR5KGV4cG9ydHMsIFwiX19lc01vZHVsZVwiLCB7XG4gICAgdmFsdWU6IHRydWVcbn0pO1xuT2JqZWN0LmRlZmluZVByb3BlcnR5KGV4cG9ydHMsIFwiUm91dGVLaW5kXCIsIHtcbiAgICBlbnVtZXJhYmxlOiB0cnVlLFxuICAgIGdldDogZnVuY3Rpb24oKSB7XG4gICAgICAgIHJldHVybiBSb3V0ZUtpbmQ7XG4gICAgfVxufSk7XG52YXIgUm91dGVLaW5kO1xuKGZ1bmN0aW9uKFJvdXRlS2luZCkge1xuICAgIFJvdXRlS2luZFsvKipcbiAgICogYFBBR0VTYCByZXByZXNlbnRzIGFsbCB0aGUgUmVhY3QgcGFnZXMgdGhhdCBhcmUgdW5kZXIgYHBhZ2VzL2AuXG4gICAqLyBcIlBBR0VTXCJdID0gXCJQQUdFU1wiO1xuICAgIFJvdXRlS2luZFsvKipcbiAgICogYFBBR0VTX0FQSWAgcmVwcmVzZW50cyBhbGwgdGhlIEFQSSByb3V0ZXMgdW5kZXIgYHBhZ2VzL2FwaS9gLlxuICAgKi8gXCJQQUdFU19BUElcIl0gPSBcIlBBR0VTX0FQSVwiO1xuICAgIFJvdXRlS2luZFsvKipcbiAgICogYEFQUF9QQUdFYCByZXByZXNlbnRzIGFsbCB0aGUgUmVhY3QgcGFnZXMgdGhhdCBhcmUgdW5kZXIgYGFwcC9gIHdpdGggdGhlXG4gICAqIGZpbGVuYW1lIG9mIGBwYWdlLntqLHR9c3sseH1gLlxuICAgKi8gXCJBUFBfUEFHRVwiXSA9IFwiQVBQX1BBR0VcIjtcbiAgICBSb3V0ZUtpbmRbLyoqXG4gICAqIGBBUFBfUk9VVEVgIHJlcHJlc2VudHMgYWxsIHRoZSBBUEkgcm91dGVzIGFuZCBtZXRhZGF0YSByb3V0ZXMgdGhhdCBhcmUgdW5kZXIgYGFwcC9gIHdpdGggdGhlXG4gICAqIGZpbGVuYW1lIG9mIGByb3V0ZS57aix0fXN7LHh9YC5cbiAgICovIFwiQVBQX1JPVVRFXCJdID0gXCJBUFBfUk9VVEVcIjtcbn0pKFJvdXRlS2luZCB8fCAoUm91dGVLaW5kID0ge30pKTtcblxuLy8jIHNvdXJjZU1hcHBpbmdVUkw9cm91dGUta2luZC5qcy5tYXAiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(api)/./node_modules/next/dist/server/future/route-kind.js\n");
 
+/***/ }),
 
-const PagesAPIRouteModule = pages_api_module.PagesAPIRouteModule;
-// Import the userland code.
-// @ts-expect-error - replaced by webpack/turbopack loader
+/***/ "(api)/./node_modules/next/dist/server/future/route-modules/pages-api/module.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/next/dist/server/future/route-modules/pages-api/module.js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-// Re-export the handler (should be the default export).
-/* harmony default export */ const next_route_loaderkind_PAGES_API_page_2Fapi_2Fguardioes_2Foptin_preferredRegion_absolutePagePath_private_next_pages_2Fapi_2Fguardioes_2Foptin_ts_middlewareConfigBase64_e30_3D_ = ((0,helpers/* hoist */.l)(optin_namespaceObject, "default"));
-// Re-export config.
-const config = (0,helpers/* hoist */.l)(optin_namespaceObject, "config");
-// Create and export the route module that will be consumed.
-const routeModule = new PagesAPIRouteModule({
-    definition: {
-        kind: route_kind/* RouteKind */.x.PAGES_API,
-        page: "/api/guardioes/optin",
-        pathname: "/api/guardioes/optin",
-        // The following aren't used in production.
-        bundlePath: "",
-        filename: ""
-    },
-    userland: optin_namespaceObject
-});
-
-//# sourceMappingURL=pages-api.js.map
+eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));\n0 && (0);\nfunction _export(target, all) {\n    for(var name in all)Object.defineProperty(target, name, {\n        enumerable: true,\n        get: all[name]\n    });\n}\n_export(exports, {\n    PagesAPIRouteModule: function() {\n        return PagesAPIRouteModule;\n    },\n    default: function() {\n        return _default;\n    }\n});\nconst _routemodule = __webpack_require__(/*! ../route-module */ \"../route-module\");\nconst _node = __webpack_require__(/*! ../../../api-utils/node */ \"../../../api-utils/node\");\nclass PagesAPIRouteModule extends _routemodule.RouteModule {\n    /**\n   *\n   * @param req the incoming server request\n   * @param res the outgoing server response\n   * @param context the context for the render\n   */ async render(req, res, context) {\n        await (0, _node.apiResolver)(req, res, context.query, this.userland, {\n            ...context.previewProps,\n            revalidate: context.revalidate,\n            trustHostHeader: context.trustHostHeader,\n            allowedRevalidateHeaderKeys: context.allowedRevalidateHeaderKeys,\n            hostname: context.hostname\n        }, context.minimalMode, context.dev, context.page);\n    }\n}\nconst _default = PagesAPIRouteModule;\n\n//# sourceMappingURL=module.js.map//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L3NlcnZlci9mdXR1cmUvcm91dGUtbW9kdWxlcy9wYWdlcy1hcGkvbW9kdWxlLmpzIiwibWFwcGluZ3MiOiJBQUFhO0FBQ2IsOENBQTZDO0FBQzdDO0FBQ0EsQ0FBQyxFQUFDO0FBQ0YsTUFBTSxDQUdMO0FBQ0Q7QUFDQTtBQUNBO0FBQ0E7QUFDQSxLQUFLO0FBQ0w7QUFDQTtBQUNBO0FBQ0E7QUFDQSxLQUFLO0FBQ0w7QUFDQTtBQUNBO0FBQ0EsQ0FBQztBQUNELHFCQUFxQixtQkFBTyxDQUFDLHdDQUFpQjtBQUM5QyxjQUFjLG1CQUFPLENBQUMsd0RBQXlCO0FBQy9DO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsU0FBUztBQUNUO0FBQ0E7QUFDQTs7QUFFQSIsInNvdXJjZXMiOlsid2VicGFjazovL3JlbWFrZS1jbGFuLXNpdGUvLi9ub2RlX21vZHVsZXMvbmV4dC9kaXN0L3NlcnZlci9mdXR1cmUvcm91dGUtbW9kdWxlcy9wYWdlcy1hcGkvbW9kdWxlLmpzPzlmZWEiXSwic291cmNlc0NvbnRlbnQiOlsiXCJ1c2Ugc3RyaWN0XCI7XG5PYmplY3QuZGVmaW5lUHJvcGVydHkoZXhwb3J0cywgXCJfX2VzTW9kdWxlXCIsIHtcbiAgICB2YWx1ZTogdHJ1ZVxufSk7XG4wICYmIChtb2R1bGUuZXhwb3J0cyA9IHtcbiAgICBQYWdlc0FQSVJvdXRlTW9kdWxlOiBudWxsLFxuICAgIGRlZmF1bHQ6IG51bGxcbn0pO1xuZnVuY3Rpb24gX2V4cG9ydCh0YXJnZXQsIGFsbCkge1xuICAgIGZvcih2YXIgbmFtZSBpbiBhbGwpT2JqZWN0LmRlZmluZVByb3BlcnR5KHRhcmdldCwgbmFtZSwge1xuICAgICAgICBlbnVtZXJhYmxlOiB0cnVlLFxuICAgICAgICBnZXQ6IGFsbFtuYW1lXVxuICAgIH0pO1xufVxuX2V4cG9ydChleHBvcnRzLCB7XG4gICAgUGFnZXNBUElSb3V0ZU1vZHVsZTogZnVuY3Rpb24oKSB7XG4gICAgICAgIHJldHVybiBQYWdlc0FQSVJvdXRlTW9kdWxlO1xuICAgIH0sXG4gICAgZGVmYXVsdDogZnVuY3Rpb24oKSB7XG4gICAgICAgIHJldHVybiBfZGVmYXVsdDtcbiAgICB9XG59KTtcbmNvbnN0IF9yb3V0ZW1vZHVsZSA9IHJlcXVpcmUoXCIuLi9yb3V0ZS1tb2R1bGVcIik7XG5jb25zdCBfbm9kZSA9IHJlcXVpcmUoXCIuLi8uLi8uLi9hcGktdXRpbHMvbm9kZVwiKTtcbmNsYXNzIFBhZ2VzQVBJUm91dGVNb2R1bGUgZXh0ZW5kcyBfcm91dGVtb2R1bGUuUm91dGVNb2R1bGUge1xuICAgIC8qKlxuICAgKlxuICAgKiBAcGFyYW0gcmVxIHRoZSBpbmNvbWluZyBzZXJ2ZXIgcmVxdWVzdFxuICAgKiBAcGFyYW0gcmVzIHRoZSBvdXRnb2luZyBzZXJ2ZXIgcmVzcG9uc2VcbiAgICogQHBhcmFtIGNvbnRleHQgdGhlIGNvbnRleHQgZm9yIHRoZSByZW5kZXJcbiAgICovIGFzeW5jIHJlbmRlcihyZXEsIHJlcywgY29udGV4dCkge1xuICAgICAgICBhd2FpdCAoMCwgX25vZGUuYXBpUmVzb2x2ZXIpKHJlcSwgcmVzLCBjb250ZXh0LnF1ZXJ5LCB0aGlzLnVzZXJsYW5kLCB7XG4gICAgICAgICAgICAuLi5jb250ZXh0LnByZXZpZXdQcm9wcyxcbiAgICAgICAgICAgIHJldmFsaWRhdGU6IGNvbnRleHQucmV2YWxpZGF0ZSxcbiAgICAgICAgICAgIHRydXN0SG9zdEhlYWRlcjogY29udGV4dC50cnVzdEhvc3RIZWFkZXIsXG4gICAgICAgICAgICBhbGxvd2VkUmV2YWxpZGF0ZUhlYWRlcktleXM6IGNvbnRleHQuYWxsb3dlZFJldmFsaWRhdGVIZWFkZXJLZXlzLFxuICAgICAgICAgICAgaG9zdG5hbWU6IGNvbnRleHQuaG9zdG5hbWVcbiAgICAgICAgfSwgY29udGV4dC5taW5pbWFsTW9kZSwgY29udGV4dC5kZXYsIGNvbnRleHQucGFnZSk7XG4gICAgfVxufVxuY29uc3QgX2RlZmF1bHQgPSBQYWdlc0FQSVJvdXRlTW9kdWxlO1xuXG4vLyMgc291cmNlTWFwcGluZ1VSTD1tb2R1bGUuanMubWFwIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./node_modules/next/dist/server/future/route-modules/pages-api/module.js\n");
 
 /***/ })
 
@@ -143,7 +100,7 @@ const routeModule = new PagesAPIRouteModule({
 var __webpack_require__ = require("../../../webpack-api-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [172], () => (__webpack_exec__(5249)));
+var __webpack_exports__ = (__webpack_exec__("(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fguardioes%2Foptin&preferredRegion=&absolutePagePath=.%2Fpages%5Capi%5Cguardioes%5Coptin.ts&middlewareConfigBase64=e30%3D!"));
 module.exports = __webpack_exports__;
 
 })();

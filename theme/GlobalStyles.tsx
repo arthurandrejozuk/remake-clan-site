@@ -34,6 +34,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
 
   }
+
   
 `;
 
